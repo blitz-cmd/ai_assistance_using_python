@@ -36,13 +36,13 @@ def wishMe():
         speak("good afternoon")
     else:
         speak("good evening")
-    speak("I am Burp, Deep's assistance! how may i help you")
+    speak("I am Burp! How may I help you?")
     
 class ScoreGet:
     def __init__(self):
         self.url_get_all_matches = "http://cricapi.com/api/matches"
         self.url_get_score="http://cricapi.com/api/cricketScore"
-        self.api_key = "DBVIPRw2ehNE67A3CjTcwLcBWt92"
+        self.api_key = "your_api_key"       #get your api from cricapi.com
         self.unique_id = ""  # unique to every match
 
     def get_unique_id(self):
@@ -91,7 +91,7 @@ def takeCommand():
     try:
         print("Recognising.....")
         query=r.recognize_google(audio, language='en-in')
-        print(f"Deep said is: {query}\n")
+        print(f"User said is: {query}\n")
         
     except Exception as e:
         #print(e)
@@ -106,14 +106,14 @@ def sendEmail(to, content):
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.ehlo()
     server.starttls()
-    server.login('srfrter133@gmail.com', 'qwerty1234@')
-    server.sendmail('srfrter133@gmail.com', to, content)
+    server.login('your_email_id', 'your_password')
+    server.sendmail('your_email_id', to, content)
     server.close()
     
     
     
 if __name__ == "__main__":
-    #speak("deep is hacker")
+    
     wishMe()
     while True:
         query=takeCommand().lower()
@@ -130,16 +130,9 @@ if __name__ == "__main__":
             speak(results)
             
         
-        #elif "open youtube" in query:
-        #   chrome_path="C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
-        #   webbrowser.register('chrome', None,webbrowser.BackgroundBrowser(chrome_path),1)
-        #   c=webbrowser.get('chrome')
-        #   c.open("youtube.com")
-        
-        
         elif "site" in query:
             query=query.replace("open this site ","")
-            chrome_path="C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+            chrome_path="path_where_your_chrome.exe_is_saved"
             webbrowser.register('chrome', None,webbrowser.BackgroundBrowser(chrome_path),1)
             c=webbrowser.get('chrome')
             c.open(query+".com")
@@ -147,30 +140,30 @@ if __name__ == "__main__":
         
         elif "search" in query:
             query=query.replace("search","")
-            chrome_path="C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+            chrome_path="path_where_your_chrome.exe_is_saved"
             webbrowser.register('chrome', None,webbrowser.BackgroundBrowser(chrome_path),1)
             c=webbrowser.get('chrome')
-            c.open("https://www.google.com/search?q="+query+"&oq="+query+"&aqs=chrome.0.69i59j0l6j69i60.1376j0j9&sourceid=chrome&ie=UTF-8")
+            c.open("https://www.google.com/search?q="+query+"&oq="+query+"&aqs=chrome.0.69i59j0l6j69i60.1376j0j9&sourceid=chrome&ie=UTF-8") #this query may change in future
             
         elif "play" in query:
-            music_dir="C:\\Users\\deepd\\OneDrive\\Music"
+            music_dir="path_where_all_your_songs_are saved(till_the_folder_not files)"
             songs=os.listdir(music_dir)
             print(songs)
-            os.startfile(os.path.join(music_dir,songs[0]))
+            os.startfile(os.path.join(music_dir,songs[0]))  #you can use random function for playing random songs
             
         elif "time" in query:
             strTime=datetime.datetime.now().strftime("%H:%M:%S")
             speak(f"Sir, the time is {strTime}")
             
         elif "open" in query:
-            programpath="C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+            programpath="path_of_your_app.exe_which_you_want_to_open"
             os.startfile(programpath)
             
         elif 'send email' in query:
             try:
                 speak("What should I write?")
                 content = takeCommand()
-                to = "dj.debnath2000@gmail.com"    
+                to = "receiver's_email_address"    #sometimes mail is marked as spam
                 sendEmail(to, content)
                 speak("Email has been sent!")
             except Exception as e:
@@ -187,10 +180,10 @@ if __name__ == "__main__":
             send_message=match_obj.get_unique_id()
             print(send_message)
             from twilio.rest import Client
-            account_sid = 'ACd0fc68caca0a695fc4d5d14097d851bb'
-            auth_token = '7ef13652edbfb44a66b36ee70a32bc31'
+            account_sid = 'your_account_sid_from_crickapi_profile'
+            auth_token = 'your_auth_token_from_crickapi_profile'
             client = Client(account_sid, auth_token)
-            message = client.messages.create( body=send_message, from_='whatsapp:+14155238886', to='whatsapp:+919967926830' )
+            message = client.messages.create( body=send_message, from_='whatsapp:number_saved_while_you_use_twilio_api_for whatsapp_bot', to='whatsapp:your_number_with_country_code' )
             
         elif 'reminder' in query:
             speak("What shall I remind you about")
