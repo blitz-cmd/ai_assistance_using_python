@@ -4,8 +4,8 @@ An intelligent virtual assistant (IVA) or intelligent personal assistant (IPA) i
 
 Virtual assistants make work via:
 
-1)Text, including: online chat (especially in an instant messaging app or other app), SMS Text, e-mail or other text-based communication channel, for example Conversica's Intelligent Virtual Assistants for business.
-2)Voice, for example with Amazon Alexa on the Amazon Echo device, Siri on an iPhone, or Google Assistant on Google-enabled/Android mobile devices.
+1)Text, including: online chat (especially in an instant messaging app or other app), SMS Text, e-mail or other text-based communication channel, for example Conversica's Intelligent Virtual Assistants for business.</br>
+2)Voice, for example with Amazon Alexa on the Amazon Echo device, Siri on an iPhone, or Google Assistant on Google-enabled/Android mobile devices.</br>
 3)By taking and/or uploading images, as in the case of Samsung Bixby on the Samsung Galaxy S8.
 
 # Python
