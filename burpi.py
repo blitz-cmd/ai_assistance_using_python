@@ -294,7 +294,7 @@ def play():
                 window.update()                                         #update gui frame
                 speak('what should I write')
                 content = takeCommand()
-                speak("sending email to Deep")
+                speak("sending email to User")
                 to = "email id in which you want to send email"
                 sendEmail(to, content)
                 var.set('Email has been sent!')
